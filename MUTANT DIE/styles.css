@@ -1,0 +1,555 @@
+/* Estructura de fondo borroso */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url('img/PaisajeFondo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* BARRA DE NAVEGACIÓN (SOLO CAMBIOS DE TAMAÑO) */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(144, 179, 145, 0.732);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(96, 151, 144, 0.5);
+    height: 90px; /* Añadido: Altura reducida */
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px 0; /* Cambiado: Reducción de 10px a 8px */
+    margin: 0;
+}
+
+.nav-menu li {
+    margin: 0 14px; /* Cambiado: Reducción de 15px a 12px */
+}
+
+.nav-menu a {
+    color: rgb(227, 231, 221 );
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem; /* Cambiado: Reducción de 0.8rem a 0.7rem */
+    padding: 4px 8px; /* Cambiado: Reducción de 5px 10px a 4px 8px */
+    transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* El resto del CSS permanece EXACTAMENTE IGUAL */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(30, 30, 30, 0.7);
+    z-index: -1;
+}
+.content-overlay {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 50px; /* Añadido: Para compensar la altura de la barra */
+}
+
+.descripcion-texto {
+    max-width: 500px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.seccion-header h1 {
+    margin-top: 7rem;
+    margin-bottom: 1.5rem;
+}
+
+h1, h2, h3 {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    color: rgb(202, 215, 180);
+    font-size: 5rem;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(202, 215, 180);
+}
+
+.seccion-descripcion .container {
+    padding-top: 0;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 600px) {
+    .navbar {
+        height: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .seccion-header h1 {
+        font-size: 2.2rem;
+        margin-top: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .descripcion-texto {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem 0;
+        gap: 0;
+    }
+
+    .nav-menu li {
+        margin: 0;
+        width: 100%;
+    }
+
+    .nav-menu a {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0;   /* Antes: 1rem 0 */
+        text-align: center;
+        font-size: 0.95rem;  /* Más pequeño */
+        border-bottom: 1px solid rgba(227,231,221,0.1);
+    }
+
+    h1, h2, h3 {
+        font-size: 2rem;
+    }
+}
+
+/* --- HAMBURGER MENU --- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: rgb(227, 231, 221);
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(144, 179, 145, 0.95);
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 2px 10px rgba(96, 151, 144, 0.5);
+    }
+    .nav-menu.active {
+        display: flex;
+    }
+}
+
+/* --- ESTILOS SECCIÓN HISTORIA --- */
+.seccion-historia {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.seccion-historia .container {
+    background: rgba(44, 54, 63, 0.7);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(30, 30, 30, 0.2);
+}
+
+.seccion-historia h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #e3e7dd;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.historia-texto p {
+    font-family: 'Roboto', sans-serif;
+    color: #e3e7dd;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* --- ESTILOS SECCIÓN PERSONAJES --- */
+.seccion-personajes {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.seccion-personajes .container {
+    background: rgba(44, 54, 63, 0.7);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(30, 30, 30, 0.2);
+}
+
+.seccion-personajes h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #e3e7dd;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.personajes-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.personaje {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 1.2rem 1rem;
+    flex: 1 1 220px;
+    min-width: 220px;
+    max-width: 260px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}
+
+.personaje h3 {
+    font-family: 'Press Start 2P', cursive;
+    color: #b7e778;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+}
+
+.personaje ul {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.personaje li {
+    font-family: 'Roboto', sans-serif;
+    color: #e3e7dd;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 800px) {
+    .personajes-lista,
+    .mapas-lista,
+    .descargas-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .personaje,
+    .mapa,
+    .descarga {
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .seccion-personajes .container,
+    .seccion-mapas .container,
+    .seccion-descargas .container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+/* --- ESTILOS SECCIÓN MAPAS --- */
+.seccion-mapas {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.seccion-mapas .container {
+    background: rgba(44, 54, 63, 0.7);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(30, 30, 30, 0.2);
+}
+
+.seccion-mapas h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #e3e7dd;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.mapas-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.mapa {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 1.2rem 1rem;
+    flex: 1 1 220px;
+    min-width: 220px;
+    max-width: 260px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}
+
+.mapa h3 {
+    font-family: 'Press Start 2P', cursive;
+    color: #7fd6e7;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+}
+
+.mapa p {
+    font-family: 'Roboto', sans-serif;
+    color: #e3e7dd;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Responsive para móviles */
+@media (max-width: 800px) {
+    .mapas-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .mapa {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* --- ESTILOS SECCIÓN DESCARGAS --- */
+.seccion-descargas {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.seccion-descargas .container {
+    background: rgba(44, 54, 63, 0.7);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(30, 30, 30, 0.2);
+}
+
+.seccion-descargas h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #e3e7dd;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.descargas-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.descarga {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 1.2rem 1rem;
+    flex: 1 1 220px;
+    min-width: 220px;
+    max-width: 260px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.descarga h3 {
+    font-family: 'Press Start 2P', cursive;
+    color: #e7b87f;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+}
+
+.boton-descarga {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: #7fd6e7;
+    color: #222;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+.boton-descarga:hover {
+    background: #5bb8c9;
+    color: #fff;
+}
+
+/* Responsive para móviles */
+@media (max-width: 800px) {
+    .descargas-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .descarga {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* --- ESTILOS SECCIÓN CONTACTO --- */
+.seccion-contacto .container {
+    background: rgba(44, 54, 63, 0.7);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(30, 30, 30, 0.2);
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.seccion-contacto h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #e3e7dd;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.form-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form-contacto label {
+    font-family: 'Roboto', sans-serif;
+    color: #e3e7dd;
+    font-size: 1rem;
+}
+
+.form-contacto input,
+.form-contacto textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    padding: 0.7rem;
+    border-radius: 6px;
+    border: none;
+    background: rgba(227, 231, 221, 0.15);
+    color: #e3e7dd;
+    margin-bottom: 0.2rem;
+    resize: vertical;
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+.form-contacto input:focus,
+.form-contacto textarea:focus {
+    box-shadow: 0 0 0 2px #7fd6e7;
+}
+
+.form-contacto textarea {
+    min-height: 100px;
+    max-width: 100%;
+}
+
+.boton-enviar {
+    background: linear-gradient(90deg, #7fd6e7 0%, #b7e778 100%);
+    color: #222;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 8px rgba(127, 214, 231, 0.1);
+}
+
+.boton-enviar:hover {
+    background: linear-gradient(90deg, #5bb8c9 0%, #a3d85c 100%);
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .seccion-contacto .container {
+        padding: 1rem;
+    }
+    .form-contacto {
+        gap: 0.8rem;
+    }
+}
+
+.mensaje-exito {
+    margin-top: 1.2rem;
+    background: #b7e778;
+    color: #222;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(183, 231, 120, 0.15);
+    animation: aparecer-exito 0.7s;
+}
+
+@keyframes aparecer-exito {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
