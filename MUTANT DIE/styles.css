@@ -247,7 +247,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .personaje {
@@ -258,6 +258,10 @@ p {
     min-width: 220px;
     max-width: 260px;
     box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .personaje h3 {
@@ -292,25 +296,15 @@ p {
 
 /* Responsive para móviles */
 @media (max-width: 800px) {
-    .personajes-lista,
-    .mapas-lista,
-    .descargas-lista {
+    .personajes-lista {
         flex-direction: column;
         align-items: center;
         gap: 1.2rem;
     }
-    .personaje,
-    .mapa,
-    .descarga {
+    .personaje {
         max-width: 100%;
         width: 100%;
         box-sizing: border-box;
-    }
-    .seccion-personajes .container,
-    .seccion-mapas .container,
-    .seccion-descargas .container {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
     }
 }
 
